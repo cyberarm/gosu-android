@@ -1,4 +1,5 @@
 #include <Gosu/Gosu.hpp>
+#include <SDL.h>
 
 class GameWindow : public Gosu::Window
 {
@@ -8,7 +9,7 @@ class GameWindow : public Gosu::Window
 
 public:
     GameWindow()
-            : Window(640, 480)
+            : Window(Gosu::screen_width(), Gosu::screen_height())
     {
         set_caption("Gosu Tutorial Game");
     }
@@ -34,7 +35,7 @@ public:
     }
 };
 
-int main()
+int main(int argc, char *argv[])
 {
     GameWindow window;
     window.show();
