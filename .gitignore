@@ -15,3 +15,5 @@
 .cxx
 local.properties
 /app/jni/gosu
+/app/jni/SDL_ttf
+/app/jni/openal-soft
