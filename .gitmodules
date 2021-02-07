@@ -1,0 +1,3 @@
+[submodule "app/jni/gosu"]
+	path = app/jni/gosu
+	url = https://github.com/cyberarm/gosu
