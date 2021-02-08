@@ -3,6 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/jni/SDL_ttf" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/jni/openal-soft" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/jni/gosu" vcs="Git" />
   </component>
 </project>

@@ -13,8 +13,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(GOSU_PATH)/include
 # Add your application source files here...
 LOCAL_SRC_FILES := gosu_app.cpp
 
-LOCAL_SHARED_LIBRARIES := gosu
+LOCAL_SHARED_LIBRARIES := gosu SDL2
 
-LOCAL_LDLIBS := -lGLESv1_CM -lGLESv2 -llog
+LOCAL_LDLIBS := -llog -landroid -lGLESv1_CM -lGLESv2
 
 include $(BUILD_SHARED_LIBRARY)
