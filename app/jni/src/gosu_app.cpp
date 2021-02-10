@@ -18,7 +18,6 @@ public:
             : Window(Gosu::screen_width(), Gosu::screen_height(), Gosu::WF_FULLSCREEN | Gosu::WF_RESIZABLE), font(28, "daniel.ttf")
     {
 
-        Gosu::use_resource_directory();
         resize(Gosu::screen_width(), Gosu::screen_height(), resizable());
         __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "SCREEN Width: %d, Height: %d\n", Gosu::screen_width(), Gosu::screen_height());
         __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Width: %d, Height: %d\n", width(), height());
@@ -53,7 +52,7 @@ public:
             font.draw_text("FPS: " + Gosu::fps(), 10, 10, 10);
         }
 
-        logo.draw(10, 500, 10);
+        logo.draw(10, 500, 10, 10, 10);
     }
 };
 
