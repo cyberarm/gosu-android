@@ -15,7 +15,7 @@ class GameWindow : public Gosu::Window
 
 public:
     GameWindow()
-            : Window(Gosu::screen_width(), Gosu::screen_height(), Gosu::WF_FULLSCREEN | Gosu::WF_RESIZABLE), font(28, "daniel.ttf")
+            : Window(Gosu::screen_width(), Gosu::screen_height(), Gosu::WF_FULLSCREEN | Gosu::WF_RESIZABLE), font(128, "daniel.ttf")
     {
 
         resize(Gosu::screen_width(), Gosu::screen_height(), resizable());
@@ -49,7 +49,8 @@ public:
         Gosu::Graphics::draw_rect(10, 10 + HEIGHT + WIDTH + 10, ratio, 20, 0xff008800, 0);
 
         if (Gosu::milliseconds() > 2000) {
-            font.draw_text("FPS: " + Gosu::fps(), 10, 10, 10);
+            font.draw_text("Hello World", 10, 400, 10);
+            font.draw_text(std::string("FPS: " + std::to_string(Gosu::fps())), 10, 700, 10);
         }
 
         logo.draw(10, 500, 10, 10, 10);
