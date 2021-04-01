@@ -7,8 +7,8 @@ project(GAME)
 # android_ndk_import_module_cpufeatures()
 
 
-# SDL sources are in a subfolder named "SDL2"
-add_subdirectory(SDL2)
+# SDL2 sources are in a subfolder named "SDL"
+add_subdirectory(SDL)
 
 # Compilation of companion libraries
 #add_subdirectory(SDL_image)
