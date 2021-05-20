@@ -12,6 +12,7 @@ class GameWindow : public Gosu::Window
 #define COLOR 0xffffffff
     Gosu::Font font;
     Gosu::Image logo;
+    std::vector<Gosu::Touch> current_touches;
 
 public:
     GameWindow()
@@ -45,7 +46,7 @@ public:
         Gosu::Graphics::draw_rect(28 + HEIGHT - 5, 28, HEIGHT / 2, WIDTH, COLOR, 0);
         Gosu::Graphics::draw_rect(28 + HEIGHT - 5, 28 + HEIGHT - WIDTH, HEIGHT / 2, WIDTH, COLOR, 0);
 
-        double ratio =  width() * (60.0 / Gosu::fps()) - 20;
+        double ratio =  width() * (Gosu::fps() / 60.0) - 20;
         Gosu::Graphics::draw_rect(10, 10 + HEIGHT + WIDTH + 10, ratio, 20, 0xff008800, 0);
 
         if (Gosu::milliseconds() > 2000) {
@@ -54,6 +55,52 @@ public:
         }
 
         logo.draw(10, 500, 10, 10, 10);
+
+        for (int i = 0; i < current_touches.size(); ++i) {
+            Gosu::Touch touch = current_touches[i];
+            int size = 128;
+
+            // Multiply touch coordinates by width()/height() for now, since SDL provides us normalized screen coordinates instead of raw x/y.
+            Gosu::Graphics::draw_rect((touch.x * width()) - size / 2.0, (touch.y * height()) - size / 2.0, size, size, Gosu::Color::AQUA, 10);
+        }
+    }
+
+    void touch_began(Gosu::Touch touch) override
+    {
+        __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Touch began: id: %i, x: %f, y: %f\n", touch.sdl_id, touch.x, touch.y);
+        current_touches.emplace_back(touch);
+    }
+
+    void touch_moved(Gosu::Touch touch) override
+    {
+        __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Touch moved: id: %i, x: %f, y: %f\n", touch.sdl_id, touch.x, touch.y);
+
+        for (int i = 0; i < current_touches.size(); ++i) {
+            Gosu::Touch _touch = current_touches.at(i);
+
+            if (touch.sdl_id == _touch.sdl_id)
+            {
+                _touch.x = touch.x;
+                _touch.y = touch.y;
+
+                current_touches[i] = _touch;
+                break;
+            }
+        }
+    }
+
+    void touch_ended(Gosu::Touch touch) override
+    {
+        __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Touch ended: id: %i, x: %f, y: %f\n", touch.sdl_id, touch.x, touch.y);
+
+        for (int i = 0; i < current_touches.size(); ++i) {
+            Gosu::Touch _touch = current_touches.at(i);
+
+            if (touch.sdl_id == _touch.sdl_id)
+            {
+                current_touches.erase(current_touches.begin(), current_touches.begin() + i);
+            }
+        }
     }
 };
 
