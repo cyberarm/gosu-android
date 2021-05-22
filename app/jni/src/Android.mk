@@ -15,6 +15,6 @@ LOCAL_SRC_FILES := gosu_app.cpp
 
 LOCAL_SHARED_LIBRARIES := gosu SDL2
 
-LOCAL_LDLIBS := -llog -landroid -lGLESv1_CM -lGLESv2
+LOCAL_LDLIBS := -llog -landroid -lGLESv1_CM -lGLESv2 -lOpenSLES
 
 include $(BUILD_SHARED_LIBRARY)
