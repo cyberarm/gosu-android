@@ -17,10 +17,8 @@ class GameWindow : public Gosu::Window
 
 public:
     GameWindow()
-            : Window(2340, 1080, Gosu::WF_FULLSCREEN | Gosu::WF_RESIZABLE), font(128, "daniel.ttf"), sample("beep.wav")
+            : Window(Gosu::screen_width(), Gosu::screen_height(), Gosu::WF_FULLSCREEN), font(128, "daniel.ttf"), sample("beep.wav")
     {
-
-        resize(Gosu::screen_width(), Gosu::screen_height(), resizable());
         __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "SCREEN Width: %d, Height: %d\n", Gosu::screen_width(), Gosu::screen_height());
         __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Width: %d, Height: %d\n", width(), height());
         __android_log_print(android_LogPriority::ANDROID_LOG_VERBOSE, "Gosu", "Font: %s, size: %d\n", font.name().c_str(), font.height());
