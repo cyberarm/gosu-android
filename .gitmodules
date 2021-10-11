@@ -3,7 +3,7 @@
 	url = https://github.com/cyberarm/gosu
 [submodule "app/jni/SDL_ttf"]
 	path = app/jni/SDL_ttf
-	url = https://github.com/SDL-mirror/SDL_ttf
+	url = https://github.com/libsdl-org/SDL_ttf
 [submodule "app/jni/SDL"]
 	path = app/jni/SDL
 	url = https://github.com/libsdl-org/SDL
